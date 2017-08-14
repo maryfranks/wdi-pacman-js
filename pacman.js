@@ -78,6 +78,12 @@ function eatDot() {
   score += 10;
 }
 
+function eatGhost(ghost) {
+  if (ghost['edible'] === false) {
+    console.log("\nPac-man eats " + ghost['name'] + " and dies a " + ghost['colour'] + " death!");
+    lives -= 1;
+  };
+}
 
 // Process Player's Input
 function processInput(key) {
@@ -88,6 +94,18 @@ function processInput(key) {
       break;
     case 'd':
       eatDot();
+      break;
+    case '1':
+      eatGhost(inky);
+      break;
+    case '2':
+      eatGhost(blinky);
+      break;
+    case '3':
+      eatGhost(pinky);
+      break;
+    case '4':
+      eatGhost(clyde);
       break;
     default:
       console.log('\nInvalid Command!');
