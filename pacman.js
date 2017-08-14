@@ -63,12 +63,20 @@ function displayMenu() {
   console.log('\n\nSelect Option:\n');  // each \n creates a new line
   console.log('(d) Eat Dot');
   for (var i = 0; i < ghosts.length; i++) {
-    console.log("(" + ghosts[i]['menu_option'] + ") Eat " + ghosts[i]['name']);
+    console.log("(" + ghosts[i]['menu_option'] + ") Eat " + ghosts[i]['name'] + "(" + displayGhostEdible(ghosts[i]) + ")");
   };
   if (powerPellets > 0) {
     console.log('(p) Eat Power Pellet')
   };
   console.log('(q) Quit');
+}
+
+function displayGhostEdible(ghost) {
+  if (ghost['edible'] === true) {
+    return "edible";
+  } else {
+    return "inedible"
+  };
 }
 
 function displayPrompt() {
