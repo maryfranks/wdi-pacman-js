@@ -65,7 +65,9 @@ function displayMenu() {
   for (var i = 0; i < ghosts.length; i++) {
     console.log("(" + ghosts[i]['menu_option'] + ") Eat " + ghosts[i]['name']);
   };
-  console.log('(p) Eat Power Pellet')
+  if (powerPellets > 0) {
+    console.log('(p) Eat Power Pellet')
+  };
   console.log('(q) Quit');
 }
 
@@ -92,17 +94,21 @@ function loseLife() {
   if (lives > 0) {
     lives -= 1;
   } else if (lives === 0) {
-    console.log("Game Over");
+    console.log("\nGame Over");
     process.exit();
   };
 }
 
 function eatPowerPellet() {
-  score += 50;
-  for (var i = 0; i < ghosts.length; i++) {
-    ghosts[i]['edible'] = true
-  };
-  powerPellets -= 1;
+  if (powerPellets > 0) {
+    score += 50;
+    for (var i = 0; i < ghosts.length; i++) {
+      ghosts[i]['edible'] = true
+    };
+    powerPellets -= 1;
+  } else {
+    console.log("\nYou are out of Power Pellets!")
+  }
 }
 
 
