@@ -65,6 +65,7 @@ function displayMenu() {
   for (var i = 0; i < ghosts.length; i++) {
     console.log("(" + ghosts[i]['menu_option'] + ") Eat " + ghosts[i]['name']);
   };
+  console.log('(p) Eat Power Pellet')
   console.log('(q) Quit');
 }
 
@@ -83,8 +84,8 @@ function eatDot() {
 function eatGhost(ghost) {
   if (ghost['edible'] === false) {
     console.log("\nPac-man eats " + ghost['name'] + " and dies a " + ghost['colour'] + " death!");
+    loseLife();
   };
-  loseLife();
 }
 
 function loseLife() {
@@ -95,6 +96,15 @@ function loseLife() {
     process.exit();
   };
 }
+
+function eatPowerPellet() {
+  score += 50;
+  for (var i = 0; i < ghosts.length; i++) {
+    ghosts[i]['edible'] = true
+  };
+  powerPellets -= 1;
+}
+
 
 // Process Player's Input
 function processInput(key) {
@@ -117,6 +127,9 @@ function processInput(key) {
       break;
     case '4':
       eatGhost(clyde);
+      break;
+    case 'p':
+      eatPowerPellet();
       break;
     default:
       console.log('\nInvalid Command!');
