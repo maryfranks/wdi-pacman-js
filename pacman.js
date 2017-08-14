@@ -81,7 +81,16 @@ function eatDot() {
 function eatGhost(ghost) {
   if (ghost['edible'] === false) {
     console.log("\nPac-man eats " + ghost['name'] + " and dies a " + ghost['colour'] + " death!");
+  };
+  loseLife();
+}
+
+function loseLife() {
+  if (lives > 0) {
     lives -= 1;
+  } else if (lives === 0) {
+    console.log("Game Over");
+    process.exit();
   };
 }
 
