@@ -87,7 +87,11 @@ function eatGhost(ghost) {
   if (ghost['edible'] === false) {
     console.log("\nPac-man eats " + ghost['name'] + " and dies a " + ghost['colour'] + " death!");
     loseLife();
-  };
+  } else if (ghost['edible'] === true) {
+    score += 200;
+    console.log("\nPac-man eats " + ghost['name'] + " and starts feeling " + ghost['character'] + "!");
+    ghost['edible'] = false;
+  }
 }
 
 function loseLife() {
